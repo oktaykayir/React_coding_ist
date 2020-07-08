@@ -35,6 +35,22 @@ const port      = 3035;
  * The Request object 'req' represents the request to the server.
  * The ServerResponse object 'res' represents the writable stream back to the client.
  */
+
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3030 ");
+  
+    res.setHeader("Access-Control-Allow-Methods", "GET");
+  
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "X-Requested-With,content-type"
+    );
+  
+    res.setHeader("Access-Control-Allow-Credentials", true);
+  
+    next();
+});
+
 app.get('/data', (req, res) => {
     console.log(req.params.name);
 
